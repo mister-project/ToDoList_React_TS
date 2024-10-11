@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.scss';
+import './assets/scss/normalize.scss';
+import './assets/scss/style.scss';
 import { ToDoList } from './pages/ToDoList';
 
 
@@ -10,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    
+
     <ToDoList />
   </React.StrictMode>
 );
