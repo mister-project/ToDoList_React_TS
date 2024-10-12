@@ -8,6 +8,12 @@ export const ToDoList = () => {
     const todo1: ToDo = {
         id: 0,
         text: 'Первая задача',
+        isDone: false
+    }
+
+    const todo2: ToDo = {
+        id: 1,
+        text: 'Вторая задача',
         isDone: true
     }
 
@@ -17,14 +23,8 @@ export const ToDoList = () => {
                 <ToDoListItem toDoItem={todo1}/>
             </ul>
             <ul className="todo-list completed">
-                {/* <ToDoListItem  /> */}
-                {/* <li className="todo-list-item__wrapper">
-                    <span>Вторая задача</span>
-                    <div className="todo-list-item__buttons">
-                        <button className="btn-trash"></button>
-                        <button className="btn-uncheck"></button>
-                    </div>
-                </li> */}
+                <ToDoListItem toDoItem={todo2} />
+              
             </ul>
         </div>
     )
