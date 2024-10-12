@@ -1,12 +1,8 @@
 import { ToDoListItem } from "./ToDoListItem/ToDoListItem"
 import './ToDoList.scss'
+import { ToDo } from "../../models/todo-item"
 
 
-interface ToDo {
-    id: number,
-    text: string,
-    isDone: boolean
-}
 
 export const ToDoList = () => {
     const todo1: ToDo = {

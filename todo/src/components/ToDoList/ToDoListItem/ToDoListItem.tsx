@@ -1,6 +1,7 @@
+import { ToDo } from '../../../models/todo-item'
 import './ToDoListItem.scss'
 
-export const ToDoListItem = (props: { toDoItem: {id: number, text: string, isDone: boolean} }) => {
+export const ToDoListItem = (props: { toDoItem: ToDo }) => {
 console.log(props)
     return (
         <li className="todo-list-item__wrapper">
