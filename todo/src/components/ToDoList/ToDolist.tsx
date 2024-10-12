@@ -8,7 +8,7 @@ export const ToDoList = () => {
     const todo1: ToDo = {
         id: 0,
         text: 'Первая задача',
-        isDone: false
+        isDone: true
     }
 
     return (
