@@ -20,14 +20,18 @@ export const ToDoListPage = () => {
             text: 'Третья задача',
             isDone: true
         }
-    
+
     ]
-    
+
+    const createNewTodo = (text: string) => {
+        console.log(text)
+    }
+
     return (
         <>
             <Header />
-            <Form />
-            <ToDoList todos={todos}/>
+            <Form createNewTodo={createNewTodo} />
+            <ToDoList todos={todos} />
         </>
 
     )

@@ -1,16 +1,20 @@
 import { ChangeEvent } from 'react'
 import './Form.scss'
-export const Form = () => {
+export const Form = (props: { createNewTodo: Function }) => {
 
-let createText = ''
+    let createText = ''
 
     const formSubmit = () => {
-console.log('submit')
+        if (createText) {
+            props.createNewTodo(createText)
+        }
+
     }
 
-const chahgeText = (event: ChangeEvent<HTMLInputElement>) => {
-console.log(event.target.value);
-}
+    const chahgeText = (event: ChangeEvent<HTMLInputElement>) => {
+
+        createText = event.target.value
+    }
 
     return (
         <div className="form-wrapper">
