@@ -4,7 +4,7 @@ import { ToDo } from "../../models/todo-item"
 
 
 
-export const ToDoList = () => {
+export const ToDoList = (props: {todos: ToDo[]}) => {
 const todos: ToDo[] = [
     {
         id: 0,
@@ -15,45 +15,41 @@ const todos: ToDo[] = [
         id: 1,
         text: 'Вторая задача',
         isDone: true
-    }
-
-]
-
-    const todo1: ToDo = {
-        id: 0,
-        text: 'Первая задача',
-        isDone: false
-    }
-
-    const todo2: ToDo = {
-        id: 1,
-        text: 'Вторая задача',
+    },
+    {
+        id: 2,
+        text: 'Третья задача',
         isDone: true
     }
 
+]
+    
+const ckeckedList = () => {
+    return props.todos
+    .filter((item) => !item.isDone)
+    .map((item, idx) => {
+        return (
+            <ToDoListItem toDoItem={item} key={idx}/>
+        )
+    })
+}
+
+const unCkeckedList = () => {
+    return props.todos
+    .filter((item) => item.isDone)
+    .map((item, idx) => {
+        return (
+            <ToDoListItem toDoItem={item} key={idx}/>
+        )
+    })
+}
     return (
         <div className="todo-container">
             <ul className="todo-list failed">
-                {
-                    todos
-                    .filter((item) => !item.isDone)
-                    .map((item, idx) => {
-                        return (
-                            <ToDoListItem toDoItem={item} key={idx}/>
-                        )
-                    })
-                }               
+                {ckeckedList()}               
             </ul>
             <ul className="todo-list completed">
-            {
-                    todos
-                    .filter((item) => item.isDone)
-                    .map((item, idx) => {
-                        return (
-                            <ToDoListItem toDoItem={item} key={idx}/>
-                        )
-                    })
-                }
+            {unCkeckedList()}
               
             </ul>
         </div>
