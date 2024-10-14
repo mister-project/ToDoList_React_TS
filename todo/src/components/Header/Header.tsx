@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import classes from './Header.module.scss'
 
 export const Header = () => {
@@ -5,10 +6,14 @@ export const Header = () => {
 
         <header className={classes.header}>
             <div className={classes.container}>
-                <a href="/" className={classes.link}>Home</a>
-                <a href="/todo" className={classes.link}>ToDo</a>
+                <NavLink
+                    to={'/'}
+                    className={({ isActive }) => isActive ? classes.active : ''}
+                >Home</NavLink>
+                <NavLink to={'/todo'} className={classes.link}>ToDo</NavLink>
+
             </div>
-        </header>
+        </header >
 
     )
 }
