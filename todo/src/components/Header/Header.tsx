@@ -5,7 +5,8 @@ export const Header = () => {
 
         <header className={classes.header}>
             <div className={classes.container}>
-                <a href="/" className={classes.link}>ToDo</a>
+                <a href="/" className={classes.link}>Home</a>
+                <a href="/todo" className={classes.link}>ToDo</a>
             </div>
         </header>
 
