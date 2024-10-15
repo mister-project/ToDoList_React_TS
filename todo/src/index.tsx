@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './assets/scss/normalize.scss';
 import './assets/scss/style.scss';
 import { ToDoListPage } from './pages/ToDoListPage';
-import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { HomePage } from './pages/HomePage';
-import { Header } from './components/Header/Header';
 import { ToDo } from './models/todo-item';
 import { NotFound } from './pages/404';
 import { ItemDescription } from './pages/ItemDescription';
@@ -39,6 +38,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: '/',
@@ -53,8 +53,12 @@ const router = createBrowserRouter([
         element: <ItemDescription todos={todos} />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
-])
+], { basename: '/app/' })
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -62,15 +66,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-    {/* <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path='/' element={<HomePage todos={todos} />}></Route>
-        <Route path='/list/:id' element={<ItemDescription todos={todos} />}></Route>
-        <Route path='/todo' element={<ToDoListPage />}></Route>
-        <Route path='*' element={<NotFound />}></Route>
-      </Routes>
-    </BrowserRouter> */}
+
 
   </React.StrictMode>
 );
