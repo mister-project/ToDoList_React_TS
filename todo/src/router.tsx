@@ -3,9 +3,10 @@ import { Layout } from "./layouts/Layout";
 import { NotFound } from "./pages/404";
 
 import { ToDoListPage } from "./pages/ToDoListPage";
-import { ItemDescription } from "./pages/ItemDescription";
+
 import { ToDo } from "./models/todo-item";
 import { ViewList } from "./pages/ViewList";
+import { ViewListItem } from "./pages/ViewListItem";
 
 const todos: ToDo[] = [
     {
@@ -47,7 +48,7 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         path: ':id',
-                        element: <ItemDescription todos={todos} />
+                        element: <ViewListItem todos={todos} />
                     }
                 ]
             }
