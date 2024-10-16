@@ -2,16 +2,18 @@ import { useState } from "react"
 import { Form } from "../components/Form/Form"
 import { ToDoList } from "../components/ToDoList/ToDolist"
 import { ToDo } from "../models/todo-item"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "../store"
+import { createAction } from "../feature/todoList"
 
 export const ToDoListPage = () => {
     const [todos, setTodos] = useState<ToDo[]>([])
+    const todoList = useSelector((state: RootState) => state.todoList.todos)
+    const dispatch = useDispatch()
+
+
     const createNewTodo = (text: string) => {
-        const newToDo: ToDo = {
-            id: todos.length,
-            text: text,
-            isDone: false
-        }
-        setTodos([...todos, newToDo])
+       dispatch(createAction(text))
     }
 
     const updateToDo = (toDoItem: ToDo) => {
@@ -32,7 +34,7 @@ export const ToDoListPage = () => {
     return (
         <>
             <Form createNewTodo={createNewTodo} />
-            <ToDoList todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo} />
+            <ToDoList todos={todoList} updateToDo={updateToDo} deleteToDo={deleteToDo} />
         </>
 
     )
