@@ -14,21 +14,27 @@ export const todoSlice = createSlice({
   name: 'todoList',
   initialState,
   reducers: {
-    createAction: (state, action) => {
+    createAction: (state, action: PayloadAction<string>) => {
       const newToDo: ToDo = {
         id: state.todos.length,
         text: action.payload,
         isDone: false
     }
     state.todos = [...state.todos, newToDo]
-  
-      
+       
     },
-    updateAction: (state) => {
-      
+    updateAction: (state, action: PayloadAction<ToDo>) => {
+      const newTodos = state.todos.map((todo) => {
+        if (todo.id === action.payload.id) {
+            todo.isDone = !todo.isDone
+        }
+        return todo
+    })
+    state.todos = newTodos
     },
-    deleteAction: (state, action: PayloadAction<number>) => {
-      
+    deleteAction: (state, action: PayloadAction<ToDo>) => {
+      const newTodos = state.todos.filter((todo) => todo.id !== action.payload.id)
+        state.todos = newTodos
     },
   },
 })

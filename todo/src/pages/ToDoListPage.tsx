@@ -1,13 +1,12 @@
-import { useState } from "react"
+
 import { Form } from "../components/Form/Form"
 import { ToDoList } from "../components/ToDoList/ToDolist"
 import { ToDo } from "../models/todo-item"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../store"
-import { createAction } from "../feature/todoList"
+import { createAction, deleteAction, updateAction } from "../feature/todoList"
 
-export const ToDoListPage = () => {
-    const [todos, setTodos] = useState<ToDo[]>([])
+export const ToDoListPage = () => {   
     const todoList = useSelector((state: RootState) => state.todoList.todos)
     const dispatch = useDispatch()
 
@@ -17,18 +16,11 @@ export const ToDoListPage = () => {
     }
 
     const updateToDo = (toDoItem: ToDo) => {
-        const newTodos = todos.map((todo) => {
-            if (todo.id === toDoItem.id) {
-                todo.isDone = !todo.isDone
-            }
-            return todo
-        })
-        setTodos(newTodos)
+        dispatch(updateAction(toDoItem))
     }
 
     const deleteToDo = (toDoItem: ToDo) => {
-        const newTodos = todos.filter((todo) => todo.id !== toDoItem.id)
-        setTodos(newTodos)
+        dispatch(deleteAction(toDoItem))
     }
 
     return (
