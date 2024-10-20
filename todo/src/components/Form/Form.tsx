@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './Form.scss'
+
 import { Button, FormBlock, Input, Label, Wrapper } from './Form.styled'
 
 import plusIcon from '../../assets/images/plus.png'
