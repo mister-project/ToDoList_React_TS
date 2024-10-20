@@ -1,20 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import todoReducer, { TodoState } from './feature/todoList'
+import { loadFromLocalStorage, saveToLocalStorage } from './helpers/storage'
 export interface RootState {
   todoList: TodoState
 }
 
-const saveToLocalStorage = (state: RootState) => {
-  const appState = JSON.stringify(state)
-  localStorage.setItem('appState', appState)
-}
-
-const loadFromLocalStorage = () => {
-  const appState = localStorage.getItem('appState')
-  if (!appState) return undefined
-  return JSON.parse(appState)
-}
 
 export const store = configureStore({
   reducer: {
