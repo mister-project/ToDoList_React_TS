@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import './Form.scss'
+import { Button, FormBlock, Input, Label, Wrapper } from './Form.styled'
+
+import plusIcon from '../../assets/images/plus.png'
+
 export const Form = (props: { createNewTodo: Function }) => {
     const [text, setText] = useState<string>('')
 
@@ -13,20 +17,18 @@ export const Form = (props: { createNewTodo: Function }) => {
 
     }
 
-
-
     return (
-        <div className="form-wrapper">
-            <form action="#" onSubmit={formSubmit}>
-                <label>
-                    <input
+        <Wrapper>
+            <FormBlock action="#" onSubmit={formSubmit}>
+                <Label>
+                    <Input
                         value={text}
                         type="text"
                         onChange={(e) => setText(e.target.value)}
                     />
-                    <button></button>
-                </label>
-            </form>
-        </div>
+                    <Button icon={plusIcon} />
+                </Label>
+            </FormBlock>
+        </Wrapper>
     )
 }
